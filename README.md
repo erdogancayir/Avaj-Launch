@@ -2,7 +2,7 @@
 
 # UML Relationships: Association, Directed Association, Aggregation, and Composition
 
-This document explains the differences between **Association**, **Directed Association**, **Aggregation**, and **Composition** in UML with short Java examples.
+This document explains the differences between **Association**, **Directed Association**, **Aggregation**, **Dependency**, **Multiplicity**, **Realization**, and **Inheritance** in UML with short Java examples.
 
 ---
 

@@ -12,6 +12,7 @@ This document explains the differences between **Association**, **Directed Assoc
 - [Aggregation](#aggregation)
 - [Composition](#composition)
 - [Dependency](#dependency)
+- [Multiplicity](#multiplicity)
 
 ---
 
@@ -230,6 +231,129 @@ public class Main {
 
 ---
 
+### Multiplicity
+Multiplicity defines the number of instances that can participate in a relationship between two classes. It specifies **how many objects** are involved in the association and is typically shown near the association lines in UML diagrams.
+
+#### Common Multiplicity Examples
+
+| Multiplicity     | Description                           | Example                          |
+|------------------|---------------------------------------|----------------------------------|
+| `1`              | Exactly one instance                 | A `Person` has exactly one `Passport`. |
+| `0..1`           | Zero or one (optional)               | A `Person` may or may not have a `Car`. |
+| `*` or `0..*`    | Zero or more                         | A `Library` has many `Books`.      |
+| `1..*`           | One or more                          | A `Team` has at least one `Player`. |
+| `3..5`           | A specific range of instances        | A `Group` has 3 to 5 `Members`.    |
+
+<details>
+<summary>Java Examples</summary>
+
+#### **1. One-to-One (1:1)**
+```java
+class Person {
+    private Passport passport;
+
+    public Person(Passport passport) {
+        this.passport = passport;
+    }
+
+    public Passport getPassport() {
+        return passport;
+    }
+}
+
+class Passport {
+    private String number;
+
+    public Passport(String number) {
+        this.number = number;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+}
+```
+
+#### **2. One-to-Many (1:*)**
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+class Library {
+    private List<Book> books = new ArrayList<>();
+
+    public void addBook(Book book) {
+        books.add(book);
+    }
+
+    public void listBooks() {
+        for (Book book : books) {
+            System.out.println(book.getTitle());
+        }
+    }
+}
+
+class Book {
+    private String title;
+
+    public Book(String title) {
+        this.title = title;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+}
+```
+
+#### **3. Many-to-Many (*:*)**
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+class Student {
+    private String name;
+    private List<Course> courses = new ArrayList<>();
+
+    public Student(String name) {
+        this.name = name;
+    }
+
+    public void enroll(Course course) {
+        courses.add(course);
+        course.addStudent(this);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+}
+
+class Course {
+    private String courseName;
+    private List<Student> students = new ArrayList<>();
+
+    public Course(String courseName) {
+        this.courseName = courseName;
+    }
+
+    public void addStudent(Student student) {
+        students.add(student);
+    }
+
+    public List<Student> getStudents() {
+        return students;
+    }
+}
+```
+</details>
+
+---
+
 ### Summary of Differences
 
 | Relationship       | Dependency Type  | Lifetime of Part   | UML Symbol        | Arrow Example |
@@ -239,6 +363,7 @@ public class Main {
 | **Aggregation**    | Whole-Part       | Independent        | Hollow Diamond    | Library ◇→ Book |
 | **Composition**    | Whole-Part       | Dependent          | Filled Diamond    | Car ◆→ Engine |
 | **Dependency**     | Temporary        | Independent        | Dashed Arrow      | Order ----> Payment |
+| **Multiplicity**   | Defines Quantity | Independent        | Numbers/Ranges    |
 
 ---
 

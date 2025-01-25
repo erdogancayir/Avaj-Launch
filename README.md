@@ -199,12 +199,12 @@ public class Main {
 
 ### Summary of Differences
 
-| Relationship       | Dependency Type  | Lifetime of Part   | UML Symbol        |
-|--------------------|------------------|--------------------|-------------------|
-| **Association**    | Weak             | Independent        | Simple Line       |
-| **Directed Association** | Directional     | Independent        | Line with Arrow   |
-| **Aggregation**    | Whole-Part       | Independent        | Hollow Diamond    |
-| **Composition**    | Whole-Part       | Dependent          | Filled Diamond    |
+| Relationship       | Dependency Type  | Lifetime of Part   | UML Symbol        | Arrow Example |
+|--------------------|------------------|--------------------|-------------------| --------------|
+| **Association**    | Weak             | Independent        | Simple Line       | Student ↔ Course |
+| **Directed Association** | Directional     | Independent        | Line with Arrow   | Driver → Car |
+| **Aggregation**    | Whole-Part       | Independent        | Hollow Diamond    | Library ◇→ Book |
+| **Composition**    | Whole-Part       | Dependent          | Filled Diamond    | Car ◆→ Engine |
 
 ---
 

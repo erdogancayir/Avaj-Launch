@@ -13,6 +13,7 @@ This document explains the differences between **Association**, **Directed Assoc
 - [Composition](#composition)
 - [Dependency](#dependency)
 - [Multiplicity](#multiplicity)
+- [Inheritance](#inheritance)
 
 ---
 
@@ -352,6 +353,62 @@ class Course {
 ```
 </details>
 
+### Inheritance
+Inheritance represents a relationship where a class derives from another class, inheriting its properties and methods. It is shown in UML with a solid line and a hollow triangle (`-----▷`).
+
+#### Example:
+```
+        Animal
+         ▲
+         │
+ ┌───────┴───────┐
+ │               │
+ Dog            Cat
+```
+
+- **Animal**: Base class (parent class).
+- **Dog** and **Cat**: Subclasses (child classes).
+
+<details>
+<summary>Java Example</summary>
+
+```java
+// Base Class
+class Animal {
+    public void eat() {
+        System.out.println("This animal eats food.");
+    }
+}
+
+// Derived Class 1
+class Dog extends Animal {
+    public void bark() {
+        System.out.println("The dog barks.");
+    }
+}
+
+// Derived Class 2
+class Cat extends Animal {
+    public void meow() {
+        System.out.println("The cat meows.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog dog = new Dog();
+        Cat cat = new Cat();
+
+        dog.eat(); // Inherited method
+        dog.bark();
+
+        cat.eat(); // Inherited method
+        cat.meow();
+    }
+}
+```
+</details>
+
 ---
 
 ### Summary of Differences
@@ -364,6 +421,7 @@ class Course {
 | **Composition**    | Whole-Part       | Dependent          | Filled Diamond    | Car ◆→ Engine |
 | **Dependency**     | Temporary        | Independent        | Dashed Arrow      | Order ----> Payment |
 | **Multiplicity**   | Defines Quantity | Independent        | Numbers/Ranges    |
+| **Inheritance**    | Generalization   | Dependent          | Hollow Triangle   |
 
 ---
 

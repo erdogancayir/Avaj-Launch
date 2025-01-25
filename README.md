@@ -14,6 +14,7 @@ This document explains the differences between **Association**, **Directed Assoc
 - [Dependency](#dependency)
 - [Multiplicity](#multiplicity)
 - [Inheritance](#inheritance)
+- [Realization](#realization)
 
 ---
 
@@ -408,6 +409,21 @@ public class Main {
 }
 ```
 </details>
+
+### Realization
+Realization represents the relationship between a class and an interface. A class implements an interface by providing concrete definitions for its methods. In UML, realization is shown with a **dashed line** and a **hollow triangle** (`- - - ▷`).
+
+#### Example:
+```
+        <<interface>>
+          Vehicle
+             ▲
+             │
+  - - - - - - - - - -
+   |                 |
+  Car              Bike
+```
+
 
 ---
 

@@ -11,6 +11,7 @@ This document explains the differences between **Association**, **Directed Assoc
 - [Directed Association](#directed-association)
 - [Aggregation](#aggregation)
 - [Composition](#composition)
+- [Dependency](#dependency)
 
 ---
 
@@ -195,6 +196,38 @@ public class Main {
 ```
 </details>
 
+
+### Dependency
+Dependency represents a temporary relationship where one class uses another class but does not own it. It is the weakest type of relationship in UML and is shown with a dashed arrow (`---->`).
+
+<details>
+<summary>Java Example</summary>
+
+```java
+class Payment {
+    public void processPayment(double amount) {
+        System.out.println("Processing payment of $" + amount);
+    }
+}
+
+class Order {
+    public void completeOrder(double amount, Payment payment) {
+        payment.processPayment(amount);
+        System.out.println("Order completed.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Payment payment = new Payment();
+        Order order = new Order();
+
+        order.completeOrder(50.0, payment); // Temporary dependency
+    }
+}
+```
+</details>
+
 ---
 
 ### Summary of Differences
@@ -205,6 +238,7 @@ public class Main {
 | **Directed Association** | Directional     | Independent        | Line with Arrow   | Driver → Car |
 | **Aggregation**    | Whole-Part       | Independent        | Hollow Diamond    | Library ◇→ Book |
 | **Composition**    | Whole-Part       | Dependent          | Filled Diamond    | Car ◆→ Engine |
+| **Dependency**     | Temporary        | Independent        | Dashed Arrow      | Order ----> Payment |
 
 ---
 

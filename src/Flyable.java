@@ -1,4 +1,3 @@
-// crate abstract class
 abstract class Flyable 
 {
     protected WeatherTower weatherTower;

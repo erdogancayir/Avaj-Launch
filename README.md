@@ -437,7 +437,7 @@ Realization represents the relationship between a class and an interface. A clas
 | **Composition**    | Whole-Part       | Dependent          | Filled Diamond    | Car ◆→ Engine |
 | **Dependency**     | Temporary        | Independent        | Dashed Arrow      | Order ----> Payment |
 | **Multiplicity**   | Defines Quantity | Independent        | Numbers/Ranges    |
-| **Inheritance**    | Generalization   | Dependent          | Hollow Triangle   | -▷ |
+| **Inheritance**    | Generalization   | Dependent          | Hollow Triangle   | -▷, ----▷ |
 
 ---
 

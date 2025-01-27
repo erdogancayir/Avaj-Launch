@@ -2,9 +2,9 @@ class Baloon extends Aircraft implements Flyable
 {
     private WeatherTower weatherTower;
 
-    public Baloon(long p_id, String p_name, Coordinates p_coordinates)
+    public Baloon(long p_id, String p_name, int longitude, int latitude, int height)
     {
-        super(p_id, p_name, p_coordinates);
+        super(p_id, p_name, new Coordinates(longitude, latitude, height));
     }
 
     @Override

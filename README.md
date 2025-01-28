@@ -15,6 +15,7 @@ This document explains the differences between **Association**, **Directed Assoc
 - [Multiplicity](#multiplicity)
 - [Inheritance](#inheritance)
 - [Realization](#realization)
+- [Coupling](#Coupling)
 
 ---
 
@@ -423,6 +424,69 @@ Realization represents the relationship between a class and an interface. A clas
    |                 |
   Car              Bike
 ```
+
+### Coupling
+What is Loose Coupling?
+Loose Coupling is when two classes are independent and interact through an interface or an external method call, minimizing dependencies. This ensures flexibility, better testability, and improved code reusability.
+
+What is Tight Coupling?
+Tight Coupling occurs when a class is highly dependent on another class, often requiring direct instantiation or hardcoded dependencies. This makes code less flexible and harder to modify.
+
+<details>
+Disadvantages of Tight Coupling:
+
+❌ Harder to modify since changes in one class may break dependent classes.
+❌ Difficult to test because dependencies are fixed.
+❌ Low reusability as tightly coupled components are difficult to separate.
+
+Advantages of Loose Coupling:
+
+✅ Improves testability as dependencies are injected when needed.
+✅ Flexible and extendable, allowing different implementations.
+✅ Encourages Dependency Injection, a key principle in software design.
+
+<summary>Loose - Tight Coupling Example</summary>
+
+```java
+public abstract class Flyable {
+    protected WeatherTower weatherTower;
+
+    public void registerTower(WeatherTower p_tower) {
+        this.weatherTower = p_tower;
+        weatherTower.register(this);
+    }
+
+    public abstract void updateConditions();
+}
+```
+Why is this Loose Coupling?
+
+The Flyable class does not require WeatherTower at construction.
+registerTower() allows dynamic assignment of the weather tower.
+Flyable instances can exist independently before registering.
+
+
+```java
+public abstract class Flyable {
+    protected WeatherTower weatherTower;
+
+    public Flyable(WeatherTower p_tower) {
+        this.weatherTower = p_tower;
+        weatherTower.register(this);
+    }
+
+    public abstract void updateConditions();
+}
+```
+Why is this Tight Coupling?
+
+Flyable objects cannot exist without a WeatherTower.
+Hard to test Flyable objects independently.
+No flexibility, all Flyable objects must be registered immediately.
+
+![image](https://github.com/user-attachments/assets/caeeb815-3784-43cb-95df-20f2e9e0ed3c)
+
+</details>
 
 
 ---

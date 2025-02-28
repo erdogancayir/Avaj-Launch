@@ -1,24 +1,23 @@
-class Coordinates
-{
-    private int longitude;
-    private int latitude;
-    private int height;
+public class Coordinates {
+    private final int longitude;
+    private final int latitude;
+    private final int altitude;
 
-    Coordinates(int p_longitude, int p_latitude, int p_height) {
-        this.longitude = p_longitude;
-        this.latitude = p_latitude;
-        this.height = Math.max(0, p_height); // Ensures height is non-negative
+    public Coordinates(int longitude, int latitude, int altitude) {
+        this.longitude = longitude;
+        this.latitude = latitude;
+        this.altitude = Math.max(0, Math.min(altitude, 100));
     }
 
     public int getLongitude() {
-        return this.longitude;
+        return longitude;
     }
 
     public int getLatitude() {
-        return this.latitude;
+        return latitude;
     }
 
     public int getHeight() {
-        return this.height;
+        return altitude;
     }
 }

@@ -1,28 +1,21 @@
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
-class Tower
-{
-    private List<Flyable> observers = new ArrayList<Flyable>();
-    
-    public void register(Flyable p_flyable)
-    {
-        // check duplicate
-        if (observers.contains(p_flyable))
-            return;
+public class Tower {
+    private final List<Flyable> observers = new ArrayList<>();
 
-        observers.add(p_flyable);
+    public void register(Flyable flyable) {
+        if (!observers.contains(flyable)) {
+            observers.add(flyable);
+        }
     }
 
-    public void unregister(Flyable p_flyable)
-    {
-        observers.remove(p_flyable);
+    public void unregister(Flyable flyable) {
+        observers.remove(flyable);
     }
 
-    protected void ConditionChanged()
-    {
-        for (Flyable flyable : observers)
-        {
+    protected void conditionChanged() {
+        for (Flyable flyable : new ArrayList<>(observers)) {
             flyable.updateConditions();
         }
     }

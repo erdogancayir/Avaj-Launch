@@ -1,21 +1,31 @@
-class AircraftFactory
+public class AircraftFactory
 {
-    public static Aircraft newAircraft(String type, String name, int longitude, int latitude, int height)
+    private static final AircraftFactory Instance = new AircraftFactory();
+    public static AircraftFactory getInstance() {
+        return Instance;
+    }
+
+    private static long id = 1;
+    public Aircraft newAircraft(String type, String name, Coordinates coordinates)
     {
-        long id = 1;
         switch (type) {
             case "Baloon" -> {
-                return new Baloon(id, name, longitude, latitude, height);
+                return new Baloon(generateId(), name, coordinates);
             }
             case "JetPlane" -> {
-                return new JetPlane(id, name, longitude, latitude, height);
+                return new JetPlane(generateId(), name, coordinates);
             }
             case "Helicopter" -> {
-                return new Helicopter(id, name, longitude, latitude, height);
+                return new Helicopter(generateId(), name, coordinates);
             }
             default -> {
                 throw new UnsupportedOperationException("Unsupported aircraft type: " + type);
             }
         }
+    }
+
+    public long generateId()
+    {
+        return ++id;
     }
 }

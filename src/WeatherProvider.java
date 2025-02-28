@@ -1,13 +1,18 @@
-class WeatherProvider
-{
-    private static String weather[] = {"RAIN", "FOG", "SUN", "SNOW"};
+import java.util.Random;
 
-    private WeatherProvider()
-    {
+public class WeatherProvider {
+    private static final WeatherProvider INSTANCE = new WeatherProvider();
+    private static final String[] WEATHER_TYPES = {"RAIN", "FOG", "SUN", "SNOW"};
+    private final Random random = new Random();
+
+    private WeatherProvider() {} // Private constructor to enforce singleton pattern
+
+    public static WeatherProvider getInstance() {
+        return INSTANCE;
     }
 
-    public static String getCurrentWeather(Coordinates p_coordinates)
-    {
-        return weather[(p_coordinates.getLongitude() + p_coordinates.getLatitude() + p_coordinates.getHeight()) % 4];
+    public String getCurrentWeather(Coordinates coordinates) {
+        int index = (coordinates.getLongitude() + coordinates.getLatitude() + coordinates.getHeight() + random.nextInt(50)) % WEATHER_TYPES.length;
+        return WEATHER_TYPES[index];
     }
 }
